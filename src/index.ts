@@ -46,7 +46,7 @@ export class FirestoreStore extends Store {
         }
 
         try {
-          const result = {data: doc.data()!};
+          const result = {data: JSON.parse(JSON.stringify(doc.data()!))};
           return callback(null, result);
         } catch (err) {
           return callback(err);
