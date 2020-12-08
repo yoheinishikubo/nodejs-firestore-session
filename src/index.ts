@@ -46,7 +46,7 @@ export class FirestoreStore extends Store {
         }
 
         try {
-          const result = JSON.parse(doc.data()!.data);
+          const result = doc.data()!;
           return callback(null, result);
         } catch (err) {
           return callback(err);
@@ -71,7 +71,7 @@ export class FirestoreStore extends Store {
     this.db
       .collection(this.kind)
       .doc(sid)
-      .set({data: sessJson})
+      .set(JSON.parse(sessJson))
       .then(() => {
         callback!();
       });
