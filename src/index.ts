@@ -46,7 +46,7 @@ export class FirestoreStore extends Store {
         }
 
         try {
-          const result = JSON.parse(JSON.stringify({data:doc.data()!}));
+          const result = JSON.parse(JSON.stringify(doc.data()!));
           return callback(null, result);
         } catch (err) {
           return callback(err);
@@ -63,7 +63,7 @@ export class FirestoreStore extends Store {
     let sessJson;
 
     try {
-      sessJson = JSON.stringify(session);
+      sessJson = JSON.stringify({data: session});
     } catch (err) {
       return callback(err);
     }
